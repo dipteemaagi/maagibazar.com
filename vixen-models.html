@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIXEN MODELS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c0c0c;
+    --bg-2: #141414;
+    --card: #171717;
+    --line: #2a2a2a;
+    --white: #f5f4f2;
+    --dim: #9a9691;
+    --faint: #6b6864;
+    --accent: #b8123a;
+    --accent-light: #e0304f;
+    --gold: #c9a24a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    min-height:100vh;
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 26px 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+  }
+  .logo span{ color: var(--accent-light); }
+  .tag{
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .edit-text-btn{
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--dim);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  .edit-text-btn:hover{ color: var(--white); border-color: var(--faint); }
+  header.hero{
+    text-align:center;
+    padding: 72px 32px 56px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+  }
+  .eyebrow{
+    font-size: 11.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin: 0 0 18px;
+  }
+  h1{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(38px, 6vw, 64px);
+    letter-spacing: 0.01em;
+    margin: 0 0 16px;
+    line-height: 1.02;
+  }
+  .sub{
+    color: var(--dim);
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+  .rail{
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 56px 32px 100px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .section-head h2{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    margin:0;
+  }
+  .count{
+    font-size: 12.5px;
+    color: var(--faint);
+    letter-spacing: 0.05em;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(266px, 1fr));
+    gap: 28px;
+  }
+  .card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .photo-wrap{
+    position:relative;
+    aspect-ratio: 3/4;
+    background: #222;
+    overflow:hidden;
+  }
+  .photo-wrap img{
+    width:100%; height:100%;
+    object-fit: cover;
+    display:block;
+  }
+  .category-chip{
+    position:absolute;
+    top: 12px; left: 12px;
+    background: rgba(12,12,12,0.75);
+    border: 1px solid rgba(245,244,242,0.2);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+  }
+  .card-body{
+    padding: 18px 18px 16px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .name-row{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    margin: 0 0 4px;
+  }
+  .name{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 17px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+  .verify-badge{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 16px;
+    height: 16px;
+    flex-shrink:0;
+  }
+  .verify-badge::before, .verify-badge::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background: var(--accent);
+    border-radius: 3px;
+  }
+  .verify-badge::after{ transform: rotate(45deg); }
+  .verify-badge svg{
+    position:relative;
+    z-index:1;
+    width: 8px;
+    height: 8px;
+  }
+  .flag{
+    font-size: 14px;
+    line-height:1;
+    flex-shrink:0;
+  }
+  .stats-line{
+    font-size: 11.5px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+    margin: 0 0 2px;
+    text-transform: uppercase;
+  }
+  .price{
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  .about-label{
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 5px;
+  }
+  .bio{
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.6;
+    margin: 0 0 14px;
+  }
+  .details-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+    margin: 0 0 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-item .d-label{
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 2px;
+  }
+  .detail-item .d-value{
+    font-size: 12.5px;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .avail-badge{
+    display:inline-flex;
+    align-items:center;
+    gap: 5px;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .avail-dot{
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink:0;
+  }
+  .avail-badge.is-available .avail-dot{ background: #3fa363; }
+  .avail-badge.is-available{ color: #3fa363; }
+  .avail-badge.is-unavailable .avail-dot{ background: var(--accent-light); }
+  .avail-badge.is-unavailable{ color: var(--accent-light); }
+  .hire-btn{
+    width:100%;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 11px 0;
+    cursor: pointer;
+    margin-top: 14px;
+  }
+  .hire-btn:hover{ background: var(--accent-light); }
+  .card-actions{
+    display:flex;
+    gap: 14px;
+    padding: 12px 18px 0;
+  }
+  .edit-btn, .remove-btn{
+    background:none; border:none; cursor:pointer;
+    color: var(--faint);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0 0 14px;
+    text-align:left;
+  }
+  .edit-btn:hover{ color: var(--white); }
+  .rate-row{
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 10px;
+  }
+  .stars{
+    display:flex;
+    gap: 3px;
+    cursor:pointer;
+  }
+  .stars i{
+    font-size: 17px;
+    color: #4a4844;
+  }
+  .stars i.filled{ color: var(--gold); }
+  .stars:hover i{ color: var(--gold); opacity: 0.7; }
+  .rating-meta{
+    font-size: 11px;
+    color: var(--faint);
+    white-space:nowrap;
+    letter-spacing:0.02em;
+  }
+  .remove-btn:hover{ color: var(--accent-light); }
+
+  .add-card{
+    border: 1.5px dashed var(--line);
+    background: transparent;
+    aspect-ratio: 3/4.55;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    cursor:pointer;
+    color: var(--faint);
+    transition: border-color 0.15s, color 0.15s;
+    padding: 20px;
+    text-align:center;
+  }
+  .add-card:hover{ border-color: var(--accent-light); color: var(--accent-light); }
+  .add-card .plus{ font-size: 30px; line-height:1; font-family:'Archivo Black',sans-serif; font-weight:400; }
+  .add-card span.label{ font-size: 11.5px; letter-spacing: 0.08em; text-transform:uppercase; }
+
+  .overlay{
+    position:fixed; inset:0;
+    background: rgba(6,6,6,0.8);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index: 50;
+    padding: 20px;
+  }
+  .overlay.open{ display:flex; }
+  .modal{
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--white);
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y:auto;
+    padding: 30px 28px 24px;
+  }
+  .modal h2{
+    font-family:'Archivo Black',sans-serif;
+    font-size: 19px;
+    margin: 0 0 4px;
+    letter-spacing:0.02em;
+  }
+  .modal .hint{
+    font-size: 12.5px;
+    color: var(--faint);
+    margin: 0 0 22px;
+  }
+  .field{ margin-bottom: 15px; }
+  .field label{
+    display:block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 7px;
+    font-weight:600;
+  }
+  .field input[type=text], .field textarea, .field select{
+    width:100%;
+    border: 1px solid var(--line);
+    background: #0c0c0c;
+    color: var(--white);
+    padding: 10px 11px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+  }
+  .field input[type=text]:focus, .field textarea:focus, .field select:focus{
+    outline: none;
+    border-color: var(--accent-light);
+  }
+  .file-drop{
+    border: 1.5px dashed var(--line);
+    padding: 18px;
+    text-align:center;
+    font-size: 13px;
+    color: var(--faint);
+    cursor:pointer;
+    background: #0c0c0c;
+  }
+  .file-drop:hover{ border-color: var(--accent-light); }
+  .file-drop img{
+    max-width:100%;
+    max-height: 150px;
+    display:block;
+    margin: 0 auto 8px;
+  }
+  .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-size: 13px;
+    font-weight:600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor:pointer;
+    border: 1px solid transparent;
+  }
+  .btn-ghost{
+    background: transparent;
+    border-color: var(--line);
+    color: var(--dim);
+  }
+  .btn-ghost:hover{ color: var(--white); border-color: var(--faint); }
+  .btn-accent{
+    background: var(--accent);
+    color: var(--white);
+  }
+  .btn-accent:hover{ background: var(--accent-light); }
+  .btn-accent:disabled{ opacity: 0.4; cursor:not-allowed; }
+
+  .empty{
+    text-align:center;
+    padding: 50px 20px;
+    color: var(--faint);
+    font-size: 14px;
+    grid-column: 1 / -1;
+  }
+  .pay-options{
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+  }
+  .pay-option{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    cursor:pointer;
+    font-size: 13.5px;
+  }
+  .pay-option:has(input:checked){
+    border-color: var(--accent-light);
+    background: rgba(184,18,58,0.08);
+  }
+  .pay-option input{ accent-color: var(--accent); }
+  #durationInput{
+    width:100%;
+    border: 1px solid var(--line);
+    background: #0c0c0c;
+    color: var(--white);
+    padding: 10px 11px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+  #durationInput:focus{ outline:none; border-color: var(--accent-light); }
+  .total-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-top: 1px solid var(--line);
+    margin-top: 6px;
+    padding-top: 16px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  #totalAmount{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .toast{
+    position:fixed;
+    bottom: 24px; left:50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    color: var(--bg);
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight:500;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 60;
+  }
+  .toast.show{ opacity:1; transform: translateX(-50%) translateY(-6px); }
+
+  @media (max-width: 480px){
+    .topbar{ padding: 20px; }
+    header.hero{ padding: 52px 20px 40px; }
+    .rail{ padding: 40px 18px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">VIXEN <span>MODELS</span></div>
+  <div style="display:flex; align-items:center; gap:18px;">
+    <div class="tag" id="siteTag">Talent for ads &amp; promotions</div>
+    <button class="edit-text-btn" id="editTextBtn">Edit page text</button>
+  </div>
+</div>
+
+<header class="hero">
+  <p class="eyebrow" id="siteEyebrow">Booking agency &middot; est. today</p>
+  <h1 id="siteTitle">VIXEN MODELS</h1>
+  <p class="sub" id="siteSubtitle">We supply models for advertising campaigns, promotions, trade shows and brand work. Browse the roster, book who fits, and rate them once the job's done — it keeps the whole roster honest.</p>
+</header>
+
+<div class="rail">
+  <div class="section-head">
+    <h2 id="rosterHeading">The roster</h2>
+    <span class="count" id="countLabel">0 models</span>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2 id="modalTitle">Add to the roster</h2>
+    <p class="hint" id="modalHint">Add a model's photo, price and details so clients can book and rate them.</p>
+
+    <div class="field">
+      <label>Photo</label>
+      <div class="file-drop" id="fileDrop">
+        <span id="fileDropText">Click to choose an image</span>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none">
+    </div>
+
+    <div class="field">
+      <label>Name</label>
+      <input type="text" id="nameInput" placeholder="e.g. Jordan Reyes" maxlength="60">
+    </div>
+
+    <div class="field">
+      <label>Category</label>
+      <input type="text" id="categoryInput" list="categoryOptions" placeholder="e.g. Commercial, Swimwear, Voiceover..." maxlength="40">
+      <datalist id="categoryOptions"></datalist>
+    </div>
+
+    <div class="field">
+      <label>Hiring price</label>
+      <div style="display:flex; gap:8px;">
+        <input type="number" id="rateAmountInput" placeholder="500" min="0" step="1" style="flex:1;">
+        <select id="rateUnitInput" style="flex:1;">
+          <option value="day">Per day</option>
+          <option value="hour">Per hour</option>
+          <option value="event">Per event</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>About</label>
+      <textarea id="bioInput" rows="3" placeholder="Experience, availability, height, past campaigns..." maxlength="400"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Nationality</label>
+      <input type="text" id="nationalityInput" placeholder="e.g. American, British, Brazilian..." maxlength="40">
+    </div>
+
+    <div class="field">
+      <label>Measurements</label>
+      <input type="text" id="measurementsInput" placeholder="e.g. 34-24-35, 5'9&quot;, 120 lbs" maxlength="60">
+    </div>
+
+    <div style="display:flex; gap:12px;">
+      <div class="field" style="flex:1;">
+        <label>Height</label>
+        <input type="text" id="heightInput" placeholder="e.g. 5'9&quot; / 175 cm" maxlength="20">
+      </div>
+      <div class="field" style="flex:1;">
+        <label>Body type</label>
+        <select id="bodyTypeInput">
+          <option value="Slim">Slim</option>
+          <option value="Athletic">Athletic</option>
+          <option value="Average">Average</option>
+          <option value="Curvy">Curvy</option>
+          <option value="Petite">Petite</option>
+          <option value="Muscular">Muscular</option>
+          <option value="Plus size">Plus size</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:12px;">
+      <div class="field" style="flex:1;">
+        <label>Marital status</label>
+        <select id="maritalInput">
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+          <option value="In a relationship">In a relationship</option>
+          <option value="Divorced">Divorced</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+      </div>
+      <div class="field" style="flex:1;">
+        <label>Age</label>
+        <input type="number" id="ageInput" min="18" max="99" placeholder="e.g. 24">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Availability</label>
+      <select id="availabilityInput">
+        <option value="Available">Available</option>
+        <option value="Not available">Not available</option>
+      </select>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelBtn">Cancel</button>
+      <button class="btn btn-accent" id="saveBtn" disabled>Add to roster</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="overlay" id="paymentOverlay">
+  <div class="modal">
+    <h2>Book <span id="payModelName">this model</span></h2>
+    <p class="hint">Choose a payment method and how long you need them for.</p>
+
+    <div class="field">
+      <label>Payment method</label>
+      <div class="pay-options" id="payMethodGroup">
+        <label class="pay-option"><input type="radio" name="payMethod" value="Card" checked><span>Credit / debit card</span></label>
+        <label class="pay-option"><input type="radio" name="payMethod" value="PayPal"><span>PayPal</span></label>
+        <label class="pay-option"><input type="radio" name="payMethod" value="Bank transfer"><span>Bank transfer</span></label>
+        <label class="pay-option"><input type="radio" name="payMethod" value="Cash"><span>Cash on shoot day</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label id="durationLabel">How long do you need them for?</label>
+      <input type="number" id="durationInput" min="1" step="1" value="1">
+    </div>
+
+    <div class="total-box">
+      <span>Total</span>
+      <span id="totalAmount">$0</span>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="payCancelBtn">Cancel</button>
+      <button class="btn btn-accent" id="payConfirmBtn">Confirm booking</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="textOverlay">
+  <div class="modal">
+    <h2>Edit page text</h2>
+    <p class="hint">Update the header and description text shown to everyone.</p>
+
+    <div class="field">
+      <label>Top bar tag</label>
+      <input type="text" id="editTag" maxlength="60">
+    </div>
+
+    <div class="field">
+      <label>Eyebrow text</label>
+      <input type="text" id="editEyebrow" maxlength="60">
+    </div>
+
+    <div class="field">
+      <label>Main title</label>
+      <input type="text" id="editTitle" maxlength="60">
+    </div>
+
+    <div class="field">
+      <label>Subtitle description</label>
+      <textarea id="editSubtitle" rows="3" maxlength="400"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Roster section heading</label>
+      <input type="text" id="editRosterHeading" maxlength="40">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="textCancelBtn">Cancel</button>
+      <button class="btn btn-accent" id="textSaveBtn">Save text</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'vixen-roster';
+const SITE_CONTENT_KEY = 'vixen-site-content';
+let items = [];
+let pendingImage = null;
+let editingId = null;
+
+const defaultSiteContent = {
+  tag: 'Talent for ads & promotions',
+  eyebrow: 'Booking agency \u00b7 est. today',
+  title: 'VIXEN MODELS',
+  subtitle: "We supply models for advertising campaigns, promotions, trade shows and brand work. Browse the roster, book who fits, and rate them once the job's done — it keeps the whole roster honest.",
+  rosterHeading: 'The roster'
+};
+let siteContent = { ...defaultSiteContent };
+
+const grid = document.getElementById('grid');
+const countLabel = document.getElementById('countLabel');
+const overlay = document.getElementById('overlay');
+const fileDrop = document.getElementById('fileDrop');
+const fileInput = document.getElementById('fileInput');
+const nameInput = document.getElementById('nameInput');
+const categoryInput = document.getElementById('categoryInput');
+const categoryOptions = document.getElementById('categoryOptions');
+const rateAmountInput = document.getElementById('rateAmountInput');
+const rateUnitInput = document.getElementById('rateUnitInput');
+const bioInput = document.getElementById('bioInput');
+const nationalityInput = document.getElementById('nationalityInput');
+const measurementsInput = document.getElementById('measurementsInput');
+const heightInput = document.getElementById('heightInput');
+const bodyTypeInput = document.getElementById('bodyTypeInput');
+const maritalInput = document.getElementById('maritalInput');
+const ageInput = document.getElementById('ageInput');
+const availabilityInput = document.getElementById('availabilityInput');
+const saveBtn = document.getElementById('saveBtn');
+const cancelBtn = document.getElementById('cancelBtn');
+const modalTitle = document.getElementById('modalTitle');
+const modalHint = document.getElementById('modalHint');
+const toastEl = document.getElementById('toast');
+
+const paymentOverlay = document.getElementById('paymentOverlay');
+const payModelName = document.getElementById('payModelName');
+const durationLabel = document.getElementById('durationLabel');
+const durationInput = document.getElementById('durationInput');
+const totalAmount = document.getElementById('totalAmount');
+const payCancelBtn = document.getElementById('payCancelBtn');
+const payConfirmBtn = document.getElementById('payConfirmBtn');
+let payingId = null;
+
+const unitLabels = { day: 'day', hour: 'hour', event: 'event' };
+const durationQuestions = { day: 'How many days do you need them for?', hour: 'How many hours do you need them for?', event: 'How many events/sessions?' };
+
+const siteTagEl = document.getElementById('siteTag');
+const siteEyebrowEl = document.getElementById('siteEyebrow');
+const siteTitleEl = document.getElementById('siteTitle');
+const siteSubtitleEl = document.getElementById('siteSubtitle');
+const rosterHeadingEl = document.getElementById('rosterHeading');
+const editTextBtn = document.getElementById('editTextBtn');
+const textOverlay = document.getElementById('textOverlay');
+const editTag = document.getElementById('editTag');
+const editEyebrow = document.getElementById('editEyebrow');
+const editTitle = document.getElementById('editTitle');
+const editSubtitle = document.getElementById('editSubtitle');
+const editRosterHeading = document.getElementById('editRosterHeading');
+const textCancelBtn = document.getElementById('textCancelBtn');
+const textSaveBtn = document.getElementById('textSaveBtn');
+
+function showToast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  setTimeout(() => toastEl.classList.remove('show'), 1800);
+}
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+async function loadItems(){
+  try{
+    const result = await window.storage.get(STORAGE_KEY, true);
+    items = result ? JSON.parse(result.value) : [];
+  }catch(e){
+    items = [];
+  }
+  render();
+}
+
+async function saveItems(){
+  try{
+    await window.storage.set(STORAGE_KEY, JSON.stringify(items), true);
+  }catch(e){
+    showToast("Couldn't save — try again");
+  }
+}
+
+function renderSiteContent(){
+  siteTagEl.textContent = siteContent.tag;
+  siteEyebrowEl.textContent = siteContent.eyebrow;
+  siteTitleEl.textContent = siteContent.title;
+  siteSubtitleEl.textContent = siteContent.subtitle;
+  rosterHeadingEl.textContent = siteContent.rosterHeading;
+}
+
+async function loadSiteContent(){
+  try{
+    const result = await window.storage.get(SITE_CONTENT_KEY, true);
+    siteContent = result ? { ...defaultSiteContent, ...JSON.parse(result.value) } : { ...defaultSiteContent };
+  }catch(e){
+    siteContent = { ...defaultSiteContent };
+  }
+  renderSiteContent();
+}
+
+async function saveSiteContent(){
+  try{
+    await window.storage.set(SITE_CONTENT_KEY, JSON.stringify(siteContent), true);
+  }catch(e){
+    showToast("Couldn't save text — try again");
+  }
+}
+
+editTextBtn.addEventListener('click', () => {
+  editTag.value = siteContent.tag;
+  editEyebrow.value = siteContent.eyebrow;
+  editTitle.value = siteContent.title;
+  editSubtitle.value = siteContent.subtitle;
+  editRosterHeading.value = siteContent.rosterHeading;
+  textOverlay.classList.add('open');
+});
+
+textCancelBtn.addEventListener('click', () => textOverlay.classList.remove('open'));
+textOverlay.addEventListener('click', (e) => {
+  if(e.target === textOverlay) textOverlay.classList.remove('open');
+});
+
+textSaveBtn.addEventListener('click', async () => {
+  siteContent = {
+    tag: editTag.value.trim() || defaultSiteContent.tag,
+    eyebrow: editEyebrow.value.trim() || defaultSiteContent.eyebrow,
+    title: editTitle.value.trim() || defaultSiteContent.title,
+    subtitle: editSubtitle.value.trim() || defaultSiteContent.subtitle,
+    rosterHeading: editRosterHeading.value.trim() || defaultSiteContent.rosterHeading
+  };
+  renderSiteContent();
+  textOverlay.classList.remove('open');
+  showToast('Page text updated');
+  await saveSiteContent();
+});
+
+function flagEmoji(code){
+  return String.fromCodePoint(...[...code.toUpperCase()].map(c => 127397 + c.charCodeAt(0)));
+}
+
+const nationalityMap = [
+  { code: 'US', words: ['american', 'usa', 'united states'] },
+  { code: 'GB', words: ['british', 'uk', 'united kingdom', 'english', 'scottish', 'welsh'] },
+  { code: 'CA', words: ['canadian', 'canada'] },
+  { code: 'AU', words: ['australian', 'australia'] },
+  { code: 'FR', words: ['french', 'france'] },
+  { code: 'DE', words: ['german', 'germany'] },
+  { code: 'IT', words: ['italian', 'italy'] },
+  { code: 'ES', words: ['spanish', 'spain'] },
+  { code: 'BR', words: ['brazilian', 'brazil'] },
+  { code: 'MX', words: ['mexican', 'mexico'] },
+  { code: 'JP', words: ['japanese', 'japan'] },
+  { code: 'CN', words: ['chinese', 'china'] },
+  { code: 'KR', words: ['korean', 'south korea', 'korea'] },
+  { code: 'IN', words: ['indian', 'india'] },
+  { code: 'RU', words: ['russian', 'russia'] },
+  { code: 'NL', words: ['dutch', 'netherlands', 'holland'] },
+  { code: 'SE', words: ['swedish', 'sweden'] },
+  { code: 'NO', words: ['norwegian', 'norway'] },
+  { code: 'DK', words: ['danish', 'denmark'] },
+  { code: 'PL', words: ['polish', 'poland'] },
+  { code: 'PT', words: ['portuguese', 'portugal'] },
+  { code: 'IE', words: ['irish', 'ireland'] },
+  { code: 'CH', words: ['swiss', 'switzerland'] },
+  { code: 'AT', words: ['austrian', 'austria'] },
+  { code: 'BE', words: ['belgian', 'belgium'] },
+  { code: 'GR', words: ['greek', 'greece'] },
+  { code: 'TR', words: ['turkish', 'turkey'] },
+  { code: 'NG', words: ['nigerian', 'nigeria'] },
+  { code: 'ZA', words: ['south african', 'south africa'] },
+  { code: 'EG', words: ['egyptian', 'egypt'] },
+  { code: 'KE', words: ['kenyan', 'kenya'] },
+  { code: 'GH', words: ['ghanaian', 'ghana'] },
+  { code: 'PH', words: ['filipino', 'filipina', 'philippines'] },
+  { code: 'TH', words: ['thai', 'thailand'] },
+  { code: 'VN', words: ['vietnamese', 'vietnam'] },
+  { code: 'ID', words: ['indonesian', 'indonesia'] },
+  { code: 'MY', words: ['malaysian', 'malaysia'] },
+  { code: 'SG', words: ['singaporean', 'singapore'] },
+  { code: 'NZ', words: ['new zealand', 'kiwi'] },
+  { code: 'AR', words: ['argentinian', 'argentine', 'argentina'] },
+  { code: 'CO', words: ['colombian', 'colombia'] },
+  { code: 'CL', words: ['chilean', 'chile'] },
+  { code: 'UA', words: ['ukrainian', 'ukraine'] },
+  { code: 'IL', words: ['israeli', 'israel'] },
+  { code: 'AE', words: ['emirati', 'uae', 'united arab emirates'] },
+  { code: 'SA', words: ['saudi', 'saudi arabia'] },
+  { code: 'JM', words: ['jamaican', 'jamaica'] }
+];
+
+function detectFlag(bio){
+  if(!bio) return null;
+  const text = bio.toLowerCase();
+  for(const entry of nationalityMap){
+    for(const word of entry.words){
+      const pattern = new RegExp('\\b' + word.replace(/\s+/g, '\\s+') + '\\b', 'i');
+      if(pattern.test(text)) return flagEmoji(entry.code);
+    }
+  }
+  return null;
+}
+
+function ratingBucket(count){
+  if(!count) return 'rate after booking';
+  if(count < 10) return 'new';
+  if(count < 50) return '10+ ratings';
+  if(count < 100) return '50+ ratings';
+  return '100+ ratings';
+}
+
+function starMarkup(item){
+  const avg = item.ratingCount ? item.ratingSum / item.ratingCount : 0;
+  const rounded = Math.round(avg);
+  let html = '';
+  for(let i = 1; i <= 5; i++){
+    html += `<i class="star ${i <= rounded ? 'filled' : ''}" data-value="${i}">&#9733;</i>`;
+  }
+  return html;
+}
+
+function formatRate(item){
+  if(!item.rateAmount) return 'Price on request';
+  const amount = Number(item.rateAmount);
+  const unit = unitLabels[item.rateUnit] || 'day';
+  return `$${amount.toLocaleString()} / ${unit}`;
+}
+
+function render(){
+  grid.innerHTML = '';
+  countLabel.textContent = items.length + (items.length === 1 ? ' model' : ' models');
+
+  const uniqueCategories = [...new Set(items.map(i => i.category).filter(Boolean))];
+  categoryOptions.innerHTML = uniqueCategories.map(c => `<option value="${escapeHtml(c)}"></option>`).join('');
+
+  if(items.length === 0){
+    const emptyTile = document.createElement('div');
+    emptyTile.className = 'empty';
+    emptyTile.textContent = 'No models on the roster yet. Add the first one.';
+    grid.appendChild(emptyTile);
+  }
+
+  items.slice().reverse().forEach((item) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const avg = item.ratingCount ? (item.ratingSum / item.ratingCount) : 0;
+    card.innerHTML = `
+      <div class="photo-wrap">
+        <img src="${item.image}" alt="${escapeHtml(item.name)}">
+        <div class="category-chip">${escapeHtml(item.category)}</div>
+      </div>
+      <div class="card-body">
+        <div class="name-row">
+          <p class="name">${escapeHtml(item.name)}</p>
+          <span class="verify-badge" title="Verified model"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5l4.5 4.5L19 7" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          ${detectFlag(item.nationality) ? `<span class="flag" title="${escapeHtml(item.nationality || '')}">${detectFlag(item.nationality)}</span>` : ''}
+        </div>
+        <p class="stats-line">${item.ratingCount ? avg.toFixed(1) + ' avg rating' : 'not yet rated'}</p>
+        <p class="price">${formatRate(item)}</p>
+        <div class="avail-badge ${item.availability === 'Not available' ? 'is-unavailable' : 'is-available'}" style="margin-bottom:12px;">
+          <span class="avail-dot"></span>${item.availability === 'Not available' ? 'Not available' : 'Available'}
+        </div>
+        <p class="about-label">About</p>
+        ${item.bio ? `<p class="bio">${escapeHtml(item.bio)}</p>` : '<p class="bio">No details added yet.</p>'}
+        <div class="details-grid">
+          <div class="detail-item"><p class="d-label">Nationality</p><p class="d-value">${item.nationality ? escapeHtml(item.nationality) : '—'}</p></div>
+          <div class="detail-item"><p class="d-label">Age</p><p class="d-value">${item.age ? escapeHtml(String(item.age)) : '—'}</p></div>
+          <div class="detail-item"><p class="d-label">Height</p><p class="d-value">${item.height ? escapeHtml(item.height) : '—'}</p></div>
+          <div class="detail-item"><p class="d-label">Body type</p><p class="d-value">${item.bodyType ? escapeHtml(item.bodyType) : '—'}</p></div>
+          <div class="detail-item"><p class="d-label">Measurements</p><p class="d-value">${item.measurements ? escapeHtml(item.measurements) : '—'}</p></div>
+          <div class="detail-item"><p class="d-label">Marital status</p><p class="d-value">${item.maritalStatus ? escapeHtml(item.maritalStatus) : '—'}</p></div>
+        </div>
+        <div class="rate-row">
+          <div class="stars" data-id="${item.id}">${starMarkup(item)}</div>
+          <div class="rating-meta">${ratingBucket(item.ratingCount)}</div>
+        </div>
+        <button class="hire-btn" data-hire="${item.id}">Hire now</button>
+      </div>
+      <div class="card-actions">
+        <button class="edit-btn" data-edit="${item.id}">Edit</button>
+        <button class="remove-btn" data-remove="${item.id}">Remove from roster</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  const addCard = document.createElement('div');
+  addCard.className = 'add-card';
+  addCard.innerHTML = `<div class="plus">+</div><span class="label">Add a model</span>`;
+  addCard.addEventListener('click', () => openModal());
+  grid.appendChild(addCard);
+
+  document.querySelectorAll('.stars').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const star = e.target.closest('.star');
+      if(!star) return;
+      const value = parseInt(star.dataset.value, 10);
+      const id = el.dataset.id;
+      rate(id, value);
+    });
+  });
+
+  document.querySelectorAll('[data-remove]').forEach(btn => {
+    btn.addEventListener('click', () => removeItem(btn.dataset.remove));
+  });
+
+  document.querySelectorAll('[data-hire]').forEach(btn => {
+    btn.addEventListener('click', () => hireModel(btn.dataset.hire));
+  });
+
+  document.querySelectorAll('[data-edit]').forEach(btn => {
+    btn.addEventListener('click', () => openModal(btn.dataset.edit));
+  });
+}
+
+function hireModel(id){
+  const item = items.find(i => i.id === id);
+  if(!item) return;
+  payingId = id;
+  payModelName.textContent = item.name;
+  durationLabel.textContent = durationQuestions[item.rateUnit] || durationQuestions.day;
+  durationInput.value = 1;
+  document.querySelector('input[name="payMethod"][value="Card"]').checked = true;
+  updateTotal();
+  paymentOverlay.classList.add('open');
+}
+
+function updateTotal(){
+  const item = items.find(i => i.id === payingId);
+  if(!item){ totalAmount.textContent = '$0'; return; }
+  const duration = Math.max(1, parseInt(durationInput.value, 10) || 1);
+  if(!item.rateAmount){
+    totalAmount.textContent = 'Contact for pricing';
+    return;
+  }
+  const total = Number(item.rateAmount) * duration;
+  totalAmount.textContent = `$${total.toLocaleString()}`;
+}
+
+durationInput.addEventListener('input', updateTotal);
+
+function closePaymentModal(){
+  paymentOverlay.classList.remove('open');
+  payingId = null;
+}
+
+payCancelBtn.addEventListener('click', closePaymentModal);
+paymentOverlay.addEventListener('click', (e) => {
+  if(e.target === paymentOverlay) closePaymentModal();
+});
+
+payConfirmBtn.addEventListener('click', () => {
+  const item = items.find(i => i.id === payingId);
+  if(!item) return;
+  const duration = Math.max(1, parseInt(durationInput.value, 10) || 1);
+  const method = document.querySelector('input[name="payMethod"]:checked').value;
+  const unit = unitLabels[item.rateUnit] || 'day';
+  const totalText = totalAmount.textContent;
+
+  const subject = encodeURIComponent(`Booking request: ${item.name}`);
+  const body = encodeURIComponent(
+    `Hi,\n\nI'd like to book ${item.name} (${item.category || 'model'}) for a job.\n\n` +
+    `Duration: ${duration} ${unit}${duration === 1 ? '' : 's'}\n` +
+    `Payment method: ${method}\n` +
+    `Total: ${totalText}\n\n` +
+    `Details of the shoot/campaign:\n\n`
+  );
+  window.location.href = `mailto:bookings@vixenmodels.com?subject=${subject}&body=${body}`;
+  showToast(`Booking request sent for ${item.name} — ${totalText}`);
+  closePaymentModal();
+});
+
+async function rate(id, value){
+  const item = items.find(i => i.id === id);
+  if(!item) return;
+  item.ratingSum = (item.ratingSum || 0) + value;
+  item.ratingCount = (item.ratingCount || 0) + 1;
+  render();
+  await saveItems();
+  showToast(`Rated ${value} star${value === 1 ? '' : 's'} — thanks for the feedback`);
+}
+
+async function removeItem(id){
+  items = items.filter(i => i.id !== id);
+  render();
+  await saveItems();
+  showToast('Removed from roster');
+}
+
+function openModal(id){
+  if(id){
+    const item = items.find(i => i.id === id);
+    if(!item) return;
+    editingId = id;
+    pendingImage = item.image;
+    nameInput.value = item.name;
+    categoryInput.value = item.category || '';
+    rateAmountInput.value = item.rateAmount || '';
+    rateUnitInput.value = item.rateUnit || 'day';
+    bioInput.value = item.bio || '';
+    nationalityInput.value = item.nationality || '';
+    measurementsInput.value = item.measurements || '';
+    heightInput.value = item.height || '';
+    bodyTypeInput.value = item.bodyType || 'Average';
+    maritalInput.value = item.maritalStatus || 'Single';
+    ageInput.value = item.age || '';
+    availabilityInput.value = item.availability || 'Available';
+    fileDrop.innerHTML = `<img src="${item.image}" alt="current photo">`;
+    modalTitle.textContent = 'Edit model';
+    modalHint.textContent = 'Update this model\u2019s name, photo, price or details.';
+    saveBtn.textContent = 'Save changes';
+    saveBtn.disabled = false;
+  }else{
+    editingId = null;
+    modalTitle.textContent = 'Add to the roster';
+    modalHint.textContent = "Add a model's photo, price and details so clients can book and rate them.";
+    saveBtn.textContent = 'Add to roster';
+  }
+  overlay.classList.add('open');
+}
+function closeModal(){
+  overlay.classList.remove('open');
+  pendingImage = null;
+  editingId = null;
+  nameInput.value = '';
+  bioInput.value = '';
+  nationalityInput.value = '';
+  measurementsInput.value = '';
+  heightInput.value = '';
+  bodyTypeInput.value = 'Average';
+  maritalInput.value = 'Single';
+  ageInput.value = '';
+  availabilityInput.value = 'Available';
+  rateAmountInput.value = '';
+  rateUnitInput.value = 'day';
+  categoryInput.value = '';
+  fileInput.value = '';
+  fileDrop.innerHTML = '<span id="fileDropText">Click to choose an image</span>';
+  saveBtn.disabled = true;
+  saveBtn.textContent = 'Add to roster';
+}
+
+fileDrop.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if(!file) return;
+  if(file.size > 3.5 * 1024 * 1024){
+    showToast('Please pick an image under 3.5MB');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    pendingImage = reader.result;
+    fileDrop.innerHTML = `<img src="${pendingImage}" alt="preview">`;
+    checkReady();
+  };
+  reader.readAsDataURL(file);
+});
+
+nameInput.addEventListener('input', checkReady);
+
+function checkReady(){
+  saveBtn.disabled = !(pendingImage && nameInput.value.trim());
+}
+
+cancelBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if(e.target === overlay) closeModal();
+});
+
+saveBtn.addEventListener('click', async () => {
+  if(!pendingImage || !nameInput.value.trim()) return;
+
+  if(ageInput.value && Number(ageInput.value) < 18){
+    showToast('Models must be listed as 18 or older');
+    return;
+  }
+
+  if(editingId){
+    const item = items.find(i => i.id === editingId);
+    if(!item) return;
+    item.name = nameInput.value.trim();
+    item.category = categoryInput.value.trim();
+    item.rateAmount = rateAmountInput.value ? Number(rateAmountInput.value) : null;
+    item.rateUnit = rateUnitInput.value;
+    item.bio = bioInput.value.trim();
+    item.nationality = nationalityInput.value.trim();
+    item.measurements = measurementsInput.value.trim();
+    item.height = heightInput.value.trim();
+    item.bodyType = bodyTypeInput.value;
+    item.maritalStatus = maritalInput.value;
+    item.age = ageInput.value ? Number(ageInput.value) : null;
+    item.availability = availabilityInput.value;
+    item.image = pendingImage;
+    render();
+    closeModal();
+    showToast('Model updated');
+    await saveItems();
+    return;
+  }
+
+  const newItem = {
+    id: 'model_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+    name: nameInput.value.trim(),
+    category: categoryInput.value.trim(),
+    rateAmount: rateAmountInput.value ? Number(rateAmountInput.value) : null,
+    rateUnit: rateUnitInput.value,
+    bio: bioInput.value.trim(),
+    nationality: nationalityInput.value.trim(),
+    measurements: measurementsInput.value.trim(),
+    height: heightInput.value.trim(),
+    bodyType: bodyTypeInput.value,
+    maritalStatus: maritalInput.value,
+    age: ageInput.value ? Number(ageInput.value) : null,
+    availability: availabilityInput.value,
+    image: pendingImage,
+    ratingSum: 0,
+    ratingCount: 0
+  };
+  items.push(newItem);
+  render();
+  closeModal();
+  showToast('Added to the roster');
+  await saveItems();
+});
+
+loadItems();
+loadSiteContent();
+</script>
+
+</body>
+</html>
